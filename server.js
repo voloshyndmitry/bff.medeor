@@ -37,6 +37,7 @@ const executableSchema = makeExecutableSchema({
 
 app.use(
   "/graphql",
+  cors(),
   graphqlHTTP({
     schema: executableSchema,
     context: data,
