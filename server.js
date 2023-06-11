@@ -2,15 +2,11 @@ import express from "express";
 import cors from "cors";
 import { graphqlHTTP } from "express-graphql";
 import { makeExecutableSchema } from "@graphql-tools/schema";
+import { resolvers } from "./resolvers/data.js";
+import { data } from "./models/data.js";
+
 const app = express();
 const port = 4000;
-
-const data = {
-  warriors: [
-    { id: "001", name: "Jaime" },
-    { id: "002", name: "Jorah" },
-  ],
-};
 
 const typeDefs = `
 type Warrior {
@@ -23,11 +19,6 @@ type Query {
 }
 `;
 
-const resolvers = {
-  Query: {
-    warriors: (obj, args, context, info) => context.warriors,
-  },
-};
 const executableSchema = makeExecutableSchema({
   typeDefs,
   resolvers,
