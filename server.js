@@ -14,8 +14,19 @@ type Warrior {
   name: String!
 }
 
+type User {
+    name: String
+    surname: String
+    location: String
+    email: String
+    phone: String
+    id: String
+}
+
 type Query {
-  warriors: [Warrior]
+  notes: [Warrior]
+  users: [User]
+  user(id: String): User
 }
 `;
 
